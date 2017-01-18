@@ -46,7 +46,7 @@ class App extends React.Component {
       .then(() => {
         console.log('You went to the other page!');
       }, () => {
-        console.log('You went to the other page!');
+        console.log('You did not go to the other page!');
       });
   }
 }
