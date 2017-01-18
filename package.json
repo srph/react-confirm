@@ -1,0 +1,24 @@
+{
+  "name": "react-confirm",
+  "version": "0.0.1",
+  "description": "A high-order component to replace the native confirm function with yer modals.",
+  "main": "index.js",
+  "scripts": {
+    "example:build": "webpack --config=examples/webpack.config.js --verbose --progress",
+    "example:watch": "webpack --config=examples/webpack.config.js --verbose --progress -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "buble": "^0.15.2",
+    "buble-loader": "^0.4.0",
+    "react-gateway": "^2.6.0",
+    "react-modal2": "^3.1.0",
+    "webpack": "^2.1.0-beta.25"
+  },
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  }
+}
