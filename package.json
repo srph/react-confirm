@@ -1,24 +1,54 @@
 {
-  "name": "react-confirm",
-  "version": "0.0.1",
-  "description": "A high-order component to replace the native confirm function with yer modals.",
-  "main": "index.js",
+  "name": "@srph/react-confirm",
+  "description": "Build markup-agnostic accordions",
+  "version": "0.1.0",
+  "main": "lib/index.js",
   "scripts": {
-    "example:build": "webpack --config=examples/webpack.config.js --verbose --progress",
-    "example:watch": "webpack --config=examples/webpack.config.js --verbose --progress -w"
+    "start": "npm run storybook",
+    "build": "babel src -d lib",
+    "bundle": "npm run bundle:dev && npm run bundle:prod",
+    "bundle:dev": "webpack",
+    "bundle:prod": "cross-env NODE_ENV=production webpack",
+    "postinstall": "npm run build",
+    "storybook": "start-storybook -p 9001 -c storybook",
+    "storybook:publish": "build-storybook -c storybook",
+    "test": "jest .test.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "buble": "^0.15.2",
-    "buble-loader": "^0.4.0",
-    "react-gateway": "^2.6.0",
-    "react-modal2": "^3.1.0",
-    "webpack": "2.1.0-beta.25"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/srph/react-confirm"
   },
   "dependencies": {
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "prop-types": "^15.5.10",
+    "sinon": "^4.0.1",
+    "unistore": "github:srph/unistore"
+  },
+  "peerDependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^3.2.0",
+    "@storybook/react": "^3.2.3",
+    "babel-cli": "^6.24.1",
+    "babel-core": "6.25.0",
+    "babel-eslint": "7.2.3",
+    "babel-jest": "20.0.3",
+    "babel-loader": "7.0.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.8",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react-app": "^3.0.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "classnames": "^2.2.5",
+    "cross-env": "^5.0.4",
+    "enzyme": "^2.9.1",
+    "jest": "^20.0.4",
+    "null-loader": "^0.1.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-modal": "^3.1.8",
+    "react-test-renderer": "^15.6.1",
+    "sinon": "^4.0.1",
+    "webpack": "2.6.1"
   }
 }

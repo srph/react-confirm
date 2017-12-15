@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  font-size: 14px;
+  font-family: 'Fakt Pro', 'Proxima Nova', San Francisco, -apple-system, BlinkMacSystemFont, ".SFSNText-Regular", Segoe UI, Ubuntu, Helvetica, sans-serif;
+}
+
+.app {
+  width: 480px;
+}
+
+.panel {
+  margin-bottom: 16px;
+  overflow: hidden;
+  padding: 16px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0px 4px 20px rgba(0,0,0,0.2);
+}
+
+.panel > .heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel > .heading > .title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+.panel > .heading > .button {
+  display: inline-block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.panel > .body {
+  max-height: 0;
+  overflow: hidden;
+  padding-right: 120px;
+  transition: 200ms max-height ease;
+}
+
+.panel.-open > .body {
+  max-height: 100px;
+}
+
+.content {
+  padding: 8px;
+}
