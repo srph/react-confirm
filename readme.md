@@ -28,9 +28,9 @@ This library is exposed as `ReactAccordion` (e.g., `ReactAccordion`, `ReactAccor
 `ConfirmRoot` must placed on your top-most component.
 
 ```js
-import React from 'react';
+import React from 'react'
 import Modal from './Modal'
-import {confirm, ConfirmRoot} from '@srph/react-confirm';
+import {confirm, ConfirmRoot} from '@srph/react-confirm'
 
 class App extends React.Component {
   render() {
@@ -66,6 +66,40 @@ class App extends React.Component {
 }
 
 export default App;
+```
+
+### Hooks
+In case you need to check if we're confirming, like for instance, we don't want our modal to be closed when `escape` is pressed.
+
+```
+import {confirm} from '@srph/react-confirm'
+import MyModal from './MyModal'
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <MyModal enableEscapeClose={this.state.confirming}>
+          // ...
+          <button onClick={this.handleClick}>
+            Submit Form
+          </button>
+        </MyModal>
+      </div>
+    )
+  }
+
+  handleClick() {
+    this.setState({ confirming: true })
+
+    confirm(`You haven't finished your post yet. Do you want to leave without finishing?`)
+      .then(() => {
+        this.setState({ confirming: false })
+      }, () => {
+        this.setState({ confirming: false })
+      })
+  }
+}
 ```
 
 View [examples](storybook/confirm.js).
