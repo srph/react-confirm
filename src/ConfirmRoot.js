@@ -25,6 +25,10 @@ class ConfirmRoot extends Component {
     instance = this
   }
 
+  componentWillUnmount() {
+    instance = null
+  }
+
   render() {
     return (
       <Provider store={store}>

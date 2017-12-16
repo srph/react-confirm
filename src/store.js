@@ -4,17 +4,22 @@ const store = unistore({
   active: false,
   text: '',
   options: {},
-  deferred: {},
-  promise: null
+  deferred: null
 })
 
 const actions = {
   open(state, opts) {
+    if (state.active) {
+      throw new Error('Only a single confirm can be active at a time.');
+    }
+
     // opts(str)
     if (typeof opts === 'string') {
       const text = opts
       opts = { text }
     }
+
+    opts.options = opts.options || {}
 
     // opts ({ text, actions, etc })
     // Put all other stuff inside `options`
@@ -41,7 +46,7 @@ const actions = {
       active: false,
       text: '',
       options: {},
-      deferred: {}
+      deferred: null
     }
   },
 
@@ -56,7 +61,7 @@ const actions = {
       active: false,
       text: '',
       options: {},
-      deferred: {}
+      deferred: null
     }
   }
 }
