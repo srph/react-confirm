@@ -75,8 +75,6 @@ storiesOf('Confirm', module)
       render() {
         return (
           <div>
-            <ConfirmNode onOpen={this.handleOpen} onClose={this.handleClose} />
-
             <button onClick={this.handleClick}>
               Open Confirmation
             </button>
@@ -98,6 +96,6 @@ storiesOf('Confirm', module)
       }
     }
 
-    return <SomewhereDeepDownInTheVDOMTree />
+    return <Basic />
   })
   
