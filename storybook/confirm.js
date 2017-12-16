@@ -12,21 +12,23 @@ storiesOf('Confirm', module)
     class Basic extends React.Component {
       render() {
         return (
-          <ConfirmRoot>
-            {({active, text, actions, options}) => (
-              <div>
-                <Modal isOpen={active} onRequestClose={actions.dismiss}>
-                  {text}
-                  <button onClick={actions.proceed}>Proceed</button>
-                  <button onClick={actions.dismiss}>Dismiss</button>
-                </Modal>
+          <div>
+            <ConfirmRoot>
+              {({active, text, actions, options}) => (
+                <div>
+                  <Modal isOpen={active} onRequestClose={actions.dismiss}>
+                    {text}
+                    <button onClick={actions.proceed}>Proceed</button>
+                    <button onClick={actions.dismiss}>Dismiss</button>
+                  </Modal>
+                </div>
+              )}
+            </ConfirmRoot>
 
-                <button onClick={this.handleClick}>
-                  Open Confirmation
-                </button>
-              </div>
-            )}
-          </ConfirmRoot>
+            <button onClick={this.handleClick}>
+              Open Confirmation
+            </button>
+          </div>
         )
       }
 

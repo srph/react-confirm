@@ -14,7 +14,17 @@ const BaseConfirmRoot = connect(state => state, actions)(
   )
 )
 
+let instance = null;
+
 class ConfirmRoot extends Component {
+  componentDidMount() {
+    if (instance) {
+      throw new Error('Only a single ConfirmRoot can be mounted at a time.')
+    }
+
+    instance = this
+  }
+
   render() {
     return (
       <Provider store={store}>

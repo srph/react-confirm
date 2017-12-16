@@ -1,6 +1,6 @@
 {
   "name": "@srph/react-confirm",
-  "description": "Build markup-agnostic accordions",
+  "description": "Replace native `confirm` function with yer modals",
   "version": "0.1.0",
   "main": "lib/index.js",
   "scripts": {
