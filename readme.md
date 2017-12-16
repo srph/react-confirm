@@ -9,6 +9,9 @@ This library was built to be flexible:
 - It doesn't assume markup, styling, or template.
 - It only provides the bare minimum so you could build your custom `confirm`.
 
+## How It Works
+This library uses the render props pattern. You can read more about it [here](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce).
+
 ## Installation
 ```bash
 npm install @srph/react-confirm --save
@@ -29,8 +32,8 @@ This library is exposed as `ReactAccordion` (e.g., `ReactAccordion`, `ReactAccor
 
 ```js
 import React from 'react'
-import Modal from './Modal'
 import {confirm, ConfirmRoot} from '@srph/react-confirm'
+import Modal from './Modal'
 
 class App extends React.Component {
   render() {
@@ -71,7 +74,8 @@ export default App;
 ### Hooks
 In case you need to check if we're confirming, like for instance, we don't want our modal to be closed when `escape` is pressed.
 
-```
+```js
+import React from 'react'
 import {confirm} from '@srph/react-confirm'
 import MyModal from './MyModal'
 
@@ -107,34 +111,31 @@ View [examples](storybook/confirm.js).
 ## API Documentation
 Here's a list of props you may use to customize the component for your use-case:
 
-### confirm
+### `confirm(<mixed> opts)`
 
-All other props are passed down to the `div` root element as usual.
-
-| Prop  | Type | Description |
+| Parameter  | Type | Description |
 | ----- | ---- | ----------- |
-| paneClassName | `string` (required) | The classname to pass all `AccordionPane`.  |
-| openClassName | `string` | The classname to pass to the active `AccordionPane`. Defaults to `active`. |
-| defaultActive | `number` | Default open accordion. Defaults to `0`. |
-| component | `string|ReactElement` | Component / element to use to wrap provided children. Defaults to `div` |
+| opts | `string` | Trigger the confirmation with the provided string. Shortcut for `confirm({ text: str })` |
+| opts | `object` | Trigger the confirmation with custom settings |
+| opts.text | `string` | Text to be displayed |
 
-> **NOTE**: `Accordion` wraps your provided children inside a `div`. To customize this, see the `component` prop.
+> **NOTE**: More on this later
 
 ### ConfirmRoot
 
-All other props are passed down to the `div` root element as usual.
+| Prop  | Type | Description |
+| ----- | ---- | ----------- |
+| children | `function` | Render props |
+
+#### `children({active, text, actions})`
 
 | Prop  | Type | Description |
 | ----- | ---- | ----------- |
-| index | `number` (required) | The number to identify the accordion |
-
-> **NOTE**: `AccordionButton` ignores `className`.
-
-### ConfirmNode
-
-All other props are passed down to the `button` root element as usual.
-
-> **NOTE**: `AccordionButton` ignores `onClick` and `type`.
+| active | `boolean` | If a confirmation is active |
+| text | `string` | Text to be displayed |
+| actions | `object` | |
+| actions.proceed | `object` | Proceed event handler |
+| actions.dismiss | `object` | Dismiss event handler |
 
 ## Setup
 You can check the [demo](http://xenodochial-beaver-320a9d.netlify.com), or build it yourself locally:
