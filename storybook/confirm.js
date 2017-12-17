@@ -15,13 +15,11 @@ storiesOf('Confirm', module)
           <div>
             <ConfirmRoot>
               {({active, text, actions, options}) => (
-                <div>
-                  <Modal isOpen={active} onRequestClose={actions.dismiss}>
-                    {text}
-                    <button onClick={actions.proceed}>Proceed</button>
-                    <button onClick={actions.dismiss}>Dismiss</button>
-                  </Modal>
-                </div>
+                <Modal isOpen={active} onRequestClose={actions.dismiss}>
+                  {text}
+                  <button onClick={actions.proceed}>Proceed</button>
+                  <button onClick={actions.dismiss}>Dismiss</button>
+                </Modal>
               )}
             </ConfirmRoot>
 
