@@ -125,7 +125,7 @@ Here's a list of props you may use to customize the component for your use-case:
 
 | Prop  | Type | Description |
 | ----- | ---- | ----------- |
-| children | `function` | Render props |
+| children | `function` | This is where you render whatever based on the state of `ConfirmRoot` |
 
 #### `children({active, text, actions})`
 
