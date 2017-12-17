@@ -1,4 +1,4 @@
-# React Accordion [![npm version](https://img.shields.io/npm/v/@srph/react-confirm.svg?style=flat-square)](https://npmjs.com/packages/@srph/react-confirm) [![Build Status](https://img.shields.io/travis/srph/react-confirm.svg?style=flat-square)](https://travis-ci.org/srph/react-confirm?branch=master)
+# React Confirm [![npm version](https://img.shields.io/npm/v/@srph/react-confirm.svg?style=flat-square)](https://npmjs.com/packages/@srph/react-confirm) [![Build Status](https://img.shields.io/travis/srph/react-confirm.svg?style=flat-square)](https://travis-ci.org/srph/react-confirm?branch=master)
 Replace native `confirm` function with yer modals.
 
 View [demo](http://xenodochial-beaver-320a9d.netlify.com). View [examples](storybook/accordion.js).
