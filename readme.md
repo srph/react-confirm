@@ -32,7 +32,7 @@ If you're not using a bundler like Browserify or Webpack, simply add the script 
 This library is exposed as `ReactConfirm` (e.g., `ReactConfirm.confirm` and `ReactConfirm.ConfirmRoot`).
 
 ## Usage
-`ConfirmRoot` must placed on your top-most component.
+`ConfirmRoot` must be placed on your top-most component (aka root component).
 
 ```js
 import React from 'react'
