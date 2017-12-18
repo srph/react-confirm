@@ -1,12 +1,42 @@
+var webpack = require('webpack');
+var path = require('path')
+
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    'react-confirm': './src/index.js',
+    'react-confirm.min': './src/index.js'
+  },
+
+  externals: {
+    'react': {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react'
+    },
+    'react-confirm': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom'
+    }
+  },
 
   output: {
-    path: __dirname + '/dist',
-    filename: process.env.NODE_ENV === 'production'
-      ? 'react-accordion.min.js'
-      : 'react-accordion.js'
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js',
+    chunkFilename: '[id].chunk.js',
+    libraryTarget: 'umd',
+    library: 'ReactConfirm',
   },
+
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      include: /\.min\.js$/,
+      minimize: true,
+      compress: { warnings: false }
+    })
+  ],
 
   module: {
     rules: [
