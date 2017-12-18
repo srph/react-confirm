@@ -1,3 +1,7 @@
+<div style="text-align: center">
+  <img src="preview.jpg" alt="Preview">
+</div>
+
 # React Confirm [![npm version](https://img.shields.io/npm/v/@srph/react-confirm.svg?style=flat-square)](https://npmjs.com/packages/@srph/react-confirm) [![Build Status](https://img.shields.io/travis/srph/react-confirm.svg?style=flat-square)](https://travis-ci.org/srph/react-confirm?branch=master)
 Replace native `confirm` function with yer modals.
 
