@@ -1,7 +1,7 @@
 # React Confirm [![npm version](https://img.shields.io/npm/v/@srph/react-confirm.svg?style=flat-square)](https://npmjs.com/packages/@srph/react-confirm) [![Build Status](https://img.shields.io/travis/srph/react-confirm.svg?style=flat-square)](https://travis-ci.org/srph/react-confirm?branch=master)
 Replace native `confirm` function with yer modals.
 
-View [demo](http://xenodochial-beaver-320a9d.netlify.com). View [examples](storybook/accordion.js).
+View [demo](https://barber-solders-33074.netlify.com/). View [examples](storybook/confirm.js).
 
 ## Why?
 This library was built to be flexible:
@@ -140,7 +140,7 @@ Here's a list of props you may use to customize the component for your use-case:
 | actions.dismiss | `object` | Dismiss event handler |
 
 ## Setup
-You can check the [demo](http://xenodochial-beaver-320a9d.netlify.com), or build it yourself locally:
+You can check the [demo](https://barber-solders-33074.netlify.com/), or build it yourself locally:
 
 ```bash
 npm install
