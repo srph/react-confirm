@@ -183,13 +183,13 @@ Here's a list of props you may use to customize the component for your use-case:
 | ----- | ---- | ----------- |
 | children | `function` | This is where you render whatever based on the state of `ConfirmRoot` |
 
-#### `children({active, text, actions})`
+#### `children({active, text, options, actions})`
 
 | Prop  | Type | Description |
 | ----- | ---- | ----------- |
 | active | `boolean` | If a confirmation is active |
 | text | `string` | Text to be displayed |
-| opts | `object` | All properties passed to `confirm` except `text` is accessible here |
+| options | `object` | All properties passed to `confirm` except `text` is accessible here |
 | actions | `object` | |
 | actions.proceed | `object` | Proceed event handler |
 | actions.dismiss | `object` | Dismiss event handler |
