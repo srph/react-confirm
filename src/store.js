@@ -1,4 +1,5 @@
-import unistore from './unistore';
+import unistore from './unistore'
+import omit from './omit'
 
 const store = unistore({
   active: false,
@@ -19,11 +20,9 @@ const actions = {
       opts = { text }
     }
 
-    opts.options = opts.options || {}
-
     // opts ({ text, actions, etc })
     // Put all other stuff inside `options`
-    // @TODO
+    opts.options = omit(opts, ['text'])
 
     return new Promise((resolve, reject) => {
       store.setState({
@@ -54,7 +53,7 @@ const actions = {
     if (!state.active) {
       return;
     }
-    
+
     state.deferred.reject()
 
     return {

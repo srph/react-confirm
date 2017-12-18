@@ -30,7 +30,7 @@ storiesOf('Confirm', module)
         return (
           <div>
             <ConfirmRoot>
-              {({active, text, actions, options}) => (
+              {({active, text, actions}) => (
                 <Modal isOpen={active} onRequestClose={actions.dismiss}>
                   <div className="body">
                     <h4 className="title">Confirmation</h4>
@@ -70,7 +70,7 @@ storiesOf('Confirm', module)
         return (
           <div>
             <ConfirmRoot>
-              {({active, text, actions, options}) => (
+              {({active, text, actions}) => (
                 <Modal isOpen={active} onRequestClose={actions.dismiss}>
                   <div className="body">
                     <h4 className="title">Confirmation</h4>
@@ -120,4 +120,54 @@ storiesOf('Confirm', module)
 
     return <Basic />
   })
-  
+  .add('custom title and buttons', () => {
+    class CustomTitle extends React.Component {
+      render() {
+        return (
+          <div>
+            <ConfirmRoot>
+              {({active, text, actions, options}) => (
+                <Modal isOpen={active} onRequestClose={actions.dismiss}>
+                  <div className="body">
+                    <h4 className="title">{options.title || 'Confirmation'}</h4>
+                    <p className="text">{text}</p>
+                  </div>
+
+                  <div className="footer">
+                    <button className="button" onClick={actions.dismiss}>Dismiss</button>
+                    {options.buttons && options.buttons.map((button, i) =>
+                      <button className="button" onClick={button.onClick} key={i}>
+                        {button.text}
+                      </button>
+                    )}
+                    <button className="button -primary" onClick={actions.proceed}>Proceed</button>
+                  </div>
+                </Modal>
+              )}
+            </ConfirmRoot>
+
+            <button className="button" onClick={this.handleClick}>
+              Open Confirmation
+            </button>
+          </div>
+        )
+      }
+
+      handleClick() {
+        confirm({
+          title: 'Leave page?',
+          text:`You haven't finished your post yet. Do you want to leave without finishing?`,
+          buttons: [{
+            text: 'Extra',
+            onClick: () => console.log('Hello, meet the extra button!')
+          }]
+        }).then(() => {
+          console.log('Proceed')
+        }, () => {
+          console.log('Dismissed')
+        })
+      }
+    }
+
+    return <CustomTitle />
+  })

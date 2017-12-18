@@ -40,7 +40,7 @@ class App extends React.Component {
     return (
       <div>
         <ConfirmRoot>
-          {({active, text, actions, options}) => (
+          {({active, text, actions}) => (
             <Modal isOpen={active} onRequestClose={actions.dismiss}>
               {text}
               <button onClick={actions.proceed}>Proceed</button>
@@ -81,7 +81,7 @@ class App extends React.Component {
   state = {
     confirming: false
   }
-  
+
   render() {
     return (
       <div>
@@ -108,6 +108,56 @@ class App extends React.Component {
 }
 ```
 
+### Custom options
+If you want to pass any kind of other options, anything you pass to `confirm(opts)` except `text` is available through the render props' `options`. In the example below, we're allowing custom titles and extra actions / buttons.
+
+```js
+import React from 'react'
+import {confirm} from '@srph/react-confirm'
+import MyModal from './MyModal'
+
+class CustomTitle extends React.Component {
+  render() {
+    return (
+      <div>
+        <ConfirmRoot>
+          {({active, text, actions, options}) => (
+            <Modal isOpen={active} onRequestClose={actions.dismiss}>
+              {options.title || 'Confirmation'}
+
+              <button className="button" onClick={actions.dismiss}>Dismiss</button>
+
+              {options.buttons && options.buttons.map((button, i) =>
+                <button className="button" onClick={button.onClick}>{button.text}</button>
+              )}
+
+              <button className="button -primary" onClick={actions.proceed}>Proceed</button>
+            </Modal>
+          )}
+        </ConfirmRoot>
+
+        <button className="button" onClick={this.handleClick}>
+          Open Confirmation
+        </button>
+      </div>
+    )
+  }
+
+  handleClick() {
+    confirm({
+      title: 'Leave page?',
+      text:`You haven't finished your post yet. Do you want to leave without finishing?`
+    }).then(() => {
+      console.log('Proceed')
+    }, () => {
+      console.log('Dismissed')
+    })
+  }
+}
+```
+
+This is kept flexible as everything is up to you.
+
 View [examples](storybook/confirm.js).
 
 ## API Documentation
@@ -118,7 +168,7 @@ Here's a list of props you may use to customize the component for your use-case:
 | Parameter  | Type | Description |
 | ----- | ---- | ----------- |
 | opts | `string` | Trigger the confirmation with the provided string. Shortcut for `confirm({ text: str })` |
-| opts | `object` | Trigger the confirmation with custom settings |
+| opts | `object` | Trigger the confirmation with custom settings. All properties except `opts.text` is mapped to `options` in `children` |
 | opts.text | `string` | Text to be displayed |
 
 > **NOTE**: More on this later
@@ -135,6 +185,7 @@ Here's a list of props you may use to customize the component for your use-case:
 | ----- | ---- | ----------- |
 | active | `boolean` | If a confirmation is active |
 | text | `string` | Text to be displayed |
+| opts | `object` | All properties passed to `confirm` except `text` is accessible here |
 | actions | `object` | |
 | actions.proceed | `object` | Proceed event handler |
 | actions.dismiss | `object` | Dismiss event handler |

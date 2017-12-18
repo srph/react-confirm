@@ -37,7 +37,7 @@ test('actions.open: should throw when already active', () => {
   }).toThrow('Only a single confirm can be active at a time.')
 })
 
-test('actions.open: transform opts', () => {
+test('actions.open: transform string text', () => {
   confirm('hey')
 
   const state = store.getState()
@@ -48,6 +48,14 @@ test('actions.open: transform opts', () => {
     options: {},
     deferred: { resolve: state.deferred.resolve, reject: state.deferred.reject }
   })
+})
+
+test.only('actions.open: map all keys except text to options', () => {
+  confirm({ text: 'hey', title: 'sup', actions: ['wat'] })
+
+  const state = store.getState()
+
+  expect(state.options).toEqual({ title: 'sup', actions: ['wat'] })
 })
 
 test('actions.open: should return promise', () => {

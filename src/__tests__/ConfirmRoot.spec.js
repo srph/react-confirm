@@ -9,7 +9,7 @@ afterEach(() => {
   node.unmount()
 })
 
-test.only('it should throw when more than 1 instance is mounted', () => {
+test('it should throw when more than 1 instance is mounted', () => {
   const Child = jest.fn(() => <div />)
   node = mount(<ConfirmRoot>{Child}</ConfirmRoot>)
 
@@ -18,7 +18,7 @@ test.only('it should throw when more than 1 instance is mounted', () => {
   }).toThrow('Only a single ConfirmRoot can be mounted at a time.')
 })
 
-test.only('it should have props', () => {
+test('it should have props', () => {
   const Child = jest.fn(() => <div />)
   node = mount(<ConfirmRoot>{Child}</ConfirmRoot>)
   const props = Child.mock.calls[0][0]
@@ -27,7 +27,7 @@ test.only('it should have props', () => {
   expect(Object.keys(props.actions)).toEqual(['proceed', 'dismiss'])
 })
 
-test.only('it should proceed', () => {
+test('it should proceed', () => {
   const spy = jest.spyOn(actions, 'proceed')
   const Child = ({actions}) => <button onClick={actions.proceed} />
   node = mount(<ConfirmRoot>{Child}</ConfirmRoot>)
@@ -39,7 +39,7 @@ test.only('it should proceed', () => {
   spy.mockRestore()
 })
 
-test.only('it should dismiss', () => {
+test('it should dismiss', () => {
   const spy = jest.spyOn(actions, 'dismiss')
   const Child = ({actions}) => <button onClick={actions.dismiss} />
   node = mount(<ConfirmRoot>{Child}</ConfirmRoot>)
