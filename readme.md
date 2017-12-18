@@ -25,7 +25,7 @@ If you're not using a bundler like Browserify or Webpack, simply add the script 
 <script src="https://unpkg.com/@srph/react-confirm/dist/react-confirm.min.js"></script>
 ```
 
-This library is exposed as `ReactAccordion` (e.g., `ReactAccordion`, `ReactAccordion.AccordionButton`, `ReactAccordion.AccordionPane`).
+This library is exposed as `ReactConfirm` (e.g., `ReactConfirm.confirm` and `ReactConfirm.ConfirmRoot`).
 
 ## Usage
 `ConfirmRoot` must placed on your top-most component.
