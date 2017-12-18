@@ -1,7 +1,7 @@
 {
   "name": "@srph/react-confirm",
   "description": "Replace native `confirm` function with yer modals",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "lib/index.js",
   "scripts": {
     "start": "npm run storybook",

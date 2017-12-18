@@ -88,9 +88,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.actions = exports.store = undefined;
 
-var _unistore = __webpack_require__(5);
+var _unistore = __webpack_require__(6);
 
 var _unistore2 = _interopRequireDefault(_unistore);
+
+var _omit = __webpack_require__(5);
+
+var _omit2 = _interopRequireDefault(_omit);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -113,11 +117,9 @@ var actions = {
       opts = { text: text };
     }
 
-    opts.options = opts.options || {};
-
     // opts ({ text, actions, etc })
     // Put all other stuff inside `options`
-    // @TODO
+    opts.options = (0, _omit2.default)(opts, ['text']);
 
     return new Promise(function (resolve, reject) {
       store.setState({
@@ -184,11 +186,11 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(7);
+var _propTypes = __webpack_require__(8);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _react3 = __webpack_require__(6);
+var _react3 = __webpack_require__(7);
 
 var _store = __webpack_require__(0);
 
@@ -318,6 +320,35 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = omit;
+/**
+ * Generate a new array without the provided keys.
+ * Bare minimum implementation of `omit`.
+ * @param {<mixed>} arr
+ * @param {<String>} keys
+ */
+function omit(arr, keys) {
+  var result = {};
+
+  for (var key in arr) {
+    if (!~keys.indexOf(key)) {
+      result[key] = arr[key];
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -360,7 +391,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //# sourceMappingURL=unistore.umd.js.map
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -502,7 +533,7 @@ exports.Provider = Provider;
 //# sourceMappingURL=react.es.js.map
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports) {
 
 // empty (null-loader)
