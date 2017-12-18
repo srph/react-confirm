@@ -14,7 +14,7 @@ module.exports = {
       commonjs: 'react',
       amd: 'react'
     },
-    'react-confirm': {
+    'react-dom': {
       root: 'ReactDOM',
       commonjs2: 'react-dom',
       commonjs: 'react-dom',
