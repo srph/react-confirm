@@ -78,6 +78,10 @@ import {confirm} from '@srph/react-confirm'
 import MyModal from './MyModal'
 
 class App extends React.Component {
+  state = {
+    confirming: false
+  }
+  
   render() {
     return (
       <div>
