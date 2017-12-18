@@ -1,3 +1,17 @@
+:root {
+  --color-white: #fff;
+  --color-black: #000;
+  --color-light-silver: #f9fafb;
+  --color-dark-silver: #8898aa;
+  --color-silver: #d9e3ed;
+  --color-lavender: #43458b;
+  --color-light-lavender: #6466bf;
+  --drop-shadow: 0px 2px 4px rgba(0,0,0,.1);
+  --drop-shadow-lower: 0px 4px 4px rgba(0,0,0,.1);
+  --border-radius: 4px;
+  --button-size: 24px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -11,46 +25,73 @@ html, body {
   width: 480px;
 }
 
-.panel {
-  margin-bottom: 16px;
-  overflow: hidden;
-  padding: 16px;
-  background: #fff;
-  border-radius: 4px;
-  box-shadow: 0px 4px 20px rgba(0,0,0,0.2);
+.confirmation-box-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.2);
 }
 
-.panel > .heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.confirmation-box {
+  margin: 40px auto;
+  width: 320px;
+  background: var(--color-white);
+  box-shadow: var(--drop-shadow);
 }
 
-.panel > .heading > .title {
+.confirmation-box > .body {
+  padding: 24px 16px;
+}
+
+.confirmation-box > .body > .title {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: var(--color-lavender);
+}
+
+.confirmation-box > .body > .text {
   margin-top: 0;
   margin-bottom: 0;
-  font-weight: bold;
 }
 
-.panel > .heading > .button {
+.confirmation-box > .footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  border-top: 1px solid var(--color-silver);
+}
+
+.button {
   display: inline-block;
-  padding: 0;
-  border: 0;
-  background: transparent;
+  padding: 0 8px;
+  height: var(--button-size);
+  line-height: (var(--button-size) - 1px);
+  color: var(--color-lavender);
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: var(--color-white);
+  border: 1px solid var(--color-silver);
+  border-radius: var(--border-radius);
+  box-shadow: var(--drop-shadow);
+  transition: all .2s cubic-bezier(.06,.67,.37,.99);
+  transform: translateY(0);
   cursor: pointer;
 }
 
-.panel > .body {
-  max-height: 0;
-  overflow: hidden;
-  padding-right: 120px;
-  transition: 200ms max-height ease;
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--drop-shadow-lower);
 }
 
-.panel.-open > .body {
-  max-height: 100px;
+.button.-primary {
+  color: var(--color-white);
+  background: var(--color-lavender);
 }
 
-.content {
-  padding: 8px;
+.button.-primary:hover {
+  background: var(--color-light-lavender);
 }

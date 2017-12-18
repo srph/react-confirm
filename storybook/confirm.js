@@ -1,11 +1,27 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 import {confirm, ConfirmRoot, ConfirmNode} from '../src';
-import Modal from 'react-modal';
+import BaseModal from 'react-modal';
+
+class Modal extends React.Component {
+  render() {
+    return <BaseModal {...this.props}
+      className={{
+        base: 'confirmation-box',
+        afterOpen: '-after-open',
+        beforeClose: '-before-open'
+      }}
+      overlayClassName={{
+        base: 'confirmation-box-overlay',
+        afterOpen: '-after-open',
+        beforeClose: '-before-open'
+      }} />
+  }
+}
 
 storiesOf('Confirm', module)
   .addDecorator(story => {
-    Modal.setAppElement('#root')
+    BaseModal.setAppElement('#root')
     return <div className="app" id="main">{story()}</div>
   })
   .add('basic', () => {
@@ -16,14 +32,20 @@ storiesOf('Confirm', module)
             <ConfirmRoot>
               {({active, text, actions, options}) => (
                 <Modal isOpen={active} onRequestClose={actions.dismiss}>
-                  {text}
-                  <button onClick={actions.proceed}>Proceed</button>
-                  <button onClick={actions.dismiss}>Dismiss</button>
+                  <div className="body">
+                    <h4 className="title">Confirmation</h4>
+                    <p className="text">{text}</p>
+                  </div>
+
+                  <div className="footer">
+                    <button className="button" onClick={actions.dismiss}>Dismiss</button>
+                    <button className="button -primary" onClick={actions.proceed}>Proceed</button>
+                  </div>
                 </Modal>
               )}
             </ConfirmRoot>
 
-            <button onClick={this.handleClick}>
+            <button className="button" onClick={this.handleClick}>
               Open Confirmation
             </button>
           </div>
@@ -50,9 +72,15 @@ storiesOf('Confirm', module)
             <ConfirmRoot>
               {({active, text, actions, options}) => (
                 <Modal isOpen={active} onRequestClose={actions.dismiss}>
-                  {text}
-                  <button onClick={actions.proceed}>Proceed</button>
-                  <button onClick={actions.dismiss}>Dismiss</button>
+                  <div className="body">
+                    <h4 className="title">Confirmation</h4>
+                    <p className="text">{text}</p>
+                  </div>
+
+                  <div className="footer">
+                    <button className="button" onClick={actions.dismiss}>Dismiss</button>
+                    <button className="button -primary" onClick={actions.proceed}>Proceed</button>
+                  </div>
                 </Modal>
               )}
             </ConfirmRoot>
@@ -70,15 +98,13 @@ storiesOf('Confirm', module)
 
       render() {
         return (
-          <div>
-            <button onClick={this.handleClick}>
-              Open Confirmation
-            </button>
-          </div>
+          <button className="button" onClick={this.handleClick}>
+            Open Confirmation
+          </button>
         )
       }
 
-      handleClick() {
+      handleClick = () => {
         this.setState({ confirming: true })
 
         confirm(`You haven't finished your post yet. Do you want to leave without finishing?`)
