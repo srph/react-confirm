@@ -5,9 +5,9 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "npm run storybook",
-    "build": "node_modules/.bin/babel src -d lib",
+    "build": "babel src -d lib",
     "bundle": "cross-env NODE_ENV=production webpack",
-    "postinstall": "npm run build",
+    "prepare": "npm run build",
     "storybook": "start-storybook -p 9001 -c storybook",
     "storybook:publish": "build-storybook -c storybook",
     "test": "jest .spec.js"
