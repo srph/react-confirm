@@ -150,7 +150,13 @@ class CustomTitle extends React.Component {
   handleClick() {
     confirm({
       title: 'Leave page?',
-      text:`You haven't finished your post yet. Do you want to leave without finishing?`
+      text:`You haven't finished your post yet. Do you want to leave without finishing?`,
+      buttons: [{
+        text: 'Say something cool',
+        onClick() {
+          console.log('something cool')
+        }
+      }]
     }).then(() => {
       console.log('Proceed')
     }, () => {
