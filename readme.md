@@ -181,8 +181,6 @@ Here's a list of props you may use to customize the component for your use-case:
 | opts | `object` | Trigger the confirmation with custom settings. All properties except `opts.text` is mapped to `options` in `children` |
 | opts.text | `string` | Text to be displayed |
 
-> **NOTE**: More on this later
-
 ### ConfirmRoot
 
 | Prop  | Type | Description |
